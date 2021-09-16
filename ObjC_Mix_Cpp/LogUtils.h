@@ -9,16 +9,20 @@
 #define LogoutUtils_h
 #include <string>
 
-void (*strFunction)(const std::string&);
+typedef void (^strFunction)(const std::string&);
 
 void sayGoodb(const std::string& str );
 
-@interface logUtil : NSObject
+@interface logUtil : NSObject {
+}
++(id)getInstance;
++(void)sayGoodbye;
++(instancetype)sharedInstance;
 -(void)sayHello;
 -(bool)addFunc:(NSString *)key:(strFunction)func;
--(bool)applyFunc:(NSString *)key;
+-(bool)applyFunc:(NSString *)key:(const std::string&)arg;
 -(strFunction)removeFunc:(NSString *)key;
-+(void)sayGoodbye;
+
 
 @end
 #endif /* LogoutUtils_h */
